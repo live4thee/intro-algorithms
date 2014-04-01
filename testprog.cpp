@@ -39,6 +39,16 @@ int main(void)
     sort_and_show<int>(b, ARRAY_SIZE(b), cmp);
     sort_and_show<int>(c, ARRAY_SIZE(c), cmp);
 
+    std::cout << "find_nth(a, 1) = "
+              << sorting::find_nth_smallest(a, ARRAY_SIZE(a), 1, cmp)
+              << std::endl;
+    std::cout << "find_nth(a, 9) = "
+              << sorting::find_nth_smallest(a, ARRAY_SIZE(a), 9, cmp)
+              << std::endl;
+    std::cout << "find_nth(a, 5) = "
+              << sorting::find_nth_smallest(a, ARRAY_SIZE(a), 5, cmp)
+              << std::endl;
+
     return 0;
 }
 

@@ -61,6 +61,25 @@ void qsort(T* base, size_t nmemb,
     }
 }
 
+/**
+ * Find the nth smallest number in the array, where
+ *   `nth' belongs to [1 , .., nmemb].
+ *
+ * Find minimum - when nth == 1,
+ * Find maximum - when nth == nmemb.
+ */
+template<typename T>
+const T& find_nth_smallest(T* base, size_t nmemb, size_t nth,
+                           int (*compare)(const T& lhs, const T& rhs))
+{
+    assert (nth > 0 && nth <= nmemb);
+
+    size_t p = 1 + qs_partition(base, nmemb, compare);
+    if (p < nth) return find_nth_smallest(base+p, nmemb-p, nth-p, compare);
+    if (p > nth) return find_nth_smallest(base, p-1,  nth, compare);
+    return base[p-1];
+}
+
 }
 
 #endif
